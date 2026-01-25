@@ -110,3 +110,7 @@ aws s3 ls s3://ot-gb-migration-large-files/ --recursive
 # 3. Check repo integrity
 git fsck --full
 ```
+
+```
+find ~/bitbucket-repos -name "large-files-report.csv"
+```
