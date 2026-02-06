@@ -30,8 +30,6 @@ To validate:
 
 1.  Initialized repository and enabled LFS:
 
-```{=html}
-<!-- -->
 ```
     git init
     git lfs install
@@ -39,30 +37,30 @@ To validate:
     git add .gitattributes
     git commit -m "enable git lfs"
 
+```
+
 2.  Added large file (126MB):
 
-```{=html}
-<!-- -->
 ```
     dd if=/dev/zero of=old_large.bin bs=1M count=120
     git add old_large.bin
     git commit -m "add large file in bitbucket"
+```
 
 3.  Added normal code file:
 
-```{=html}
-<!-- -->
 ```
     echo "print('hello from bitbucket')" > app.py
     git add app.py
     git commit -m "normal code file"
 
+```
+
 4.  Pushed to Bitbucket:
 
-```{=html}
-<!-- -->
 ```
     git push -u origin master
+```
 
 **Result:**\
 Large file stored via **Git LFS on Bitbucket**.
@@ -83,10 +81,10 @@ Large file stored via **Git LFS on Bitbucket**.
 2.  Pushed Git objects\
 3.  Pushed LFS objects separately:
 
-```{=html}
-<!-- -->
 ```
     git lfs push --all github
+
+```
 
 **Result:**\
 Repository successfully migrated with:
@@ -114,37 +112,40 @@ Verified current LFS state on GitHub clone:
 
 ------------------------------------------------------------------------
 
-<img width="701" height="164" alt="Screenshot from 2026-02-05 23-25-16" src="https://github.com/user-attachments/assets/d77b8822-a18f-4c4c-9344-b432984011cd" />
+<img width="598" height="76" alt="image" src="https://github.com/user-attachments/assets/cbb3c0f0-060c-4d54-956b-74337399d9a3" />
+
 
 
 ### 3.4 Disable LFS After Migration
 
 1.  Remove LFS rules:
 
-```{=html}
-<!-- -->
 ```
     nano .gitattributes   # removed *.bin lfs rule
     git add .gitattributes
     git commit -m "fix: remove all lfs tracking rules"
     git push
+```
+
+<img width="1111" height="320" alt="image" src="https://github.com/user-attachments/assets/d8cb5fcb-eef5-4261-a70b-9683bb42b449" />
+
 
 2.  Created new file after LFS removal:
 
-```{=html}
-<!-- -->
 ```
     dd if=/dev/zero of=final_test.bin bs=1M count=5
     git add final_test.bin
     git commit -m "final test without lfs"
     git push
+```
+
+
 
 3.  Verified again:
 
-```{=html}
-<!-- -->
 ```
     git lfs ls-files
+```
 
 **Output:**
 
@@ -152,6 +153,8 @@ Verified current LFS state on GitHub clone:
 
 **Result:**\
 New file NOT listed in LFS -- stored as normal Git object.
+
+<img width="1132" height="480" alt="image" src="https://github.com/user-attachments/assets/4fc6783c-f740-4f25-9590-029d188f597c" />
 
 ------------------------------------------------------------------------
 
