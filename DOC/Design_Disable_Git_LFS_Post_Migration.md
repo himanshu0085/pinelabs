@@ -13,9 +13,9 @@
 
 ### Key Expectations
 
--   Commit history must remain intact\
--   Branches and PRs must not be affected\
--   Teams should continue working on GitHub without disruption\
+-   Commit history must remain intact
+-   Branches and PRs must not be affected
+-   Teams should continue working on GitHub without disruption
 -   Only future commit behavior may change
 
 ------------------------------------------------------------------------
@@ -26,9 +26,9 @@
 
 This can be done **without:**
 
--   rewriting history\
--   modifying commit SHAs\
--   impacting branches or tags\
+-   rewriting history
+-   modifying commit SHAs
+-   impacting branches or tags
 -   breaking existing clones
 
 ------------------------------------------------------------------------
@@ -39,8 +39,8 @@ This can be done **without:**
 
 Before disabling LFS, validate:
 
--   All historical large files are downloadable\
--   Build pipelines function correctly\
+-   All historical large files are downloadable
+-   Build pipelines function correctly
 -   Applications can access required assets
 
 ------------------------------------------------------------------------
@@ -51,13 +51,13 @@ Before disabling LFS, validate:
 
 1.  Remove LFS tracking rules from repository
     -   Update `.gitattributes`
-2.  Commit and push the change\
-3.  Do NOT perform history rewrite\
+2.  Commit and push the change
+3.  Do NOT perform history rewrite
 4.  Keep existing LFS objects untouched
 
 **Resulting Behavior**
 
--   Old large files → remain in LFS\
+-   Old large files → remain in LFS
 -   New files → stored as normal Git objects
 
 ------------------------------------------------------------------------
@@ -66,8 +66,8 @@ Before disabling LFS, validate:
 
 After disabling LFS:
 
--   Introduce file-size checks in CI\
--   Define alternate storage for binaries\
+-   Introduce file-size checks in CI
+-   Define alternate storage for binaries
 -   Communicate changes to development teams
 
 ------------------------------------------------------------------------
@@ -105,13 +105,13 @@ After disabling LFS:
 1.  **GitHub Native Limit**
 
 -   After LFS disable:
-    -   Any file \>100MB → push will be rejected\
+    -   Any file \>100MB → push will be rejected
     -   Even same extensions as legacy files will be blocked
 
 2.  **Mixed Storage Model**
 
--   Historical → LFS\
--   Future → Normal Git\
+-   Historical → LFS
+-   Future → Normal Git
 -   Possible confusion in tooling
 
 3.  **Storage Cost**
@@ -122,8 +122,8 @@ After disabling LFS:
 
 ### 5.2 Operational Risks
 
--   Developers may commit large binaries unknowingly\
--   Build tools expecting LFS may need modification\
+-   Developers may commit large binaries unknowingly
+-   Build tools expecting LFS may need modification
 -   Onboarding documentation update required
 
 ------------------------------------------------------------------------
@@ -132,20 +132,20 @@ After disabling LFS:
 
 1.  **Introduce Controls**
 
--   Pre-commit hooks\
--   CI file-size validation\
--   GitHub rulesets
+-   Pre-commit hooks
+-   CI file-size validation
+-   GitHub ruleset
 
 2.  **Alternative Storage**
 
--   Artifact repository\
--   Object storage (S3 / Artifactory)\
+-   Artifact repository
+-   Object storage (S3 / Artifactory)
 -   Package registry
 
 3.  **Communication**
 
--   Team guideline\
--   Migration note\
+-   Team guideline
+-   Migration note
 -   SOP for binaries
 
 ------------------------------------------------------------------------
@@ -154,8 +154,8 @@ After disabling LFS:
 
 If disabling LFS causes issues:
 
--   Re-enable LFS tracking\
--   No history change required\
+-   Re-enable LFS tracking
+-   No history change required
 -   Existing objects remain valid
 
 ------------------------------------------------------------------------
@@ -164,26 +164,26 @@ If disabling LFS causes issues:
 
 ### Preferred Model
 
-1.  Disable Git LFS after migration\
-2.  Keep LFS only for historical data\
-3.  Use external storage for new binaries\
+1.  Disable Git LFS after migration
+2.  Keep LFS only for historical data
+3.  Use external storage for new binaries
 4.  Enforce size governance
 
 **Benefits**
 
--   Zero history impact\
--   Clean future workflow\
--   Cost control\
+-   Zero history impact
+-   Clean future workflow
+-   Cost control
 -   Simplified Git operations
 
 ------------------------------------------------------------------------
 
 ## 9. Final Conclusion
 
--   Git LFS can be safely disabled after GitHub migration\
--   No impact to history, branches, or existing work\
--   Only future commits behavior changes\
--   Governance required for large files\
+-   Git LFS can be safely disabled after GitHub migration
+-   No impact to history, branches, or existing work
+-   Only future commits behavior changes
+-   Governance required for large files
 -   Legacy LFS cost will remain
 
 ------------------------------------------------------------------------
